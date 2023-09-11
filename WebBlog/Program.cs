@@ -1,13 +1,23 @@
 using Microsoft.EntityFrameworkCore;
 using WebBlog.Data;
+using WebBlog.Models;
+using WebBlog.Repository;
+using WebBlog.Repository.Base;
+using WebBlog.Services;
+using WebBlog.Services.IMP;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddEntityFrameworkNpgsql().AddDbContext<ApplicationDBContext>(option =>
+builder.Services.AddDbContext<ApplicationDBContext>(option =>
     option.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
+// Register your repository and service dependencies here
+builder.Services.AddScoped<IRepository<Blog>, Repository<Blog>>();
+builder.Services.AddScoped<IBlogService, BlogService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

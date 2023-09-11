@@ -12,14 +12,14 @@ using WebBlog.Data;
 namespace WebBlog.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20230911061213_CreateWebBlog")]
+    [Migration("20230911101458_CreateWebBlog")]
     partial class CreateWebBlog
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.0")
+                .HasAnnotation("ProductVersion", "6.0.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
