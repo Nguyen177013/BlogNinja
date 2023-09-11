@@ -1,14 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebBlog.Data;
 using WebBlog.Repository.Base;
 
 namespace WebBlog.Repository
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly DbContext _context;
+        private readonly ApplicationDBContext _context;
         private readonly DbSet<TEntity> _entities;
 
-        public Repository(DbContext context)
+        public Repository(ApplicationDBContext context)
         {
             _context = context;
             _entities = context.Set<TEntity>();

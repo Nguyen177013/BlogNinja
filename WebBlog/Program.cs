@@ -10,13 +10,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<ApplicationDBContext>(option =>
-    option.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
-);
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
 
 // Register your repository and service dependencies here
 builder.Services.AddScoped<IRepository<Blog>, Repository<Blog>>();
 builder.Services.AddScoped<IBlogService, BlogService>();
+builder.Services.AddScoped<IRepository<Author>, Repository<Author>>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IRepository<Genre>, Repository<Genre>>();
+builder.Services.AddScoped<IGenreService, GenreService>();
 
 var app = builder.Build();
 

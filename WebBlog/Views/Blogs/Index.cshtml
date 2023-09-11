@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Genre>
+
+@{
+    ViewData["Title"] = "Blog Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome Blog</h1>
+    @foreach(var ele in Model)
+    {
+        <h1>@ele.Name</h1>
+    }
+</div>
