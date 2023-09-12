@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/1NtisYk3L4yVMlVuKSJmLVgHImmqdlAOuVl/YmLdfk=",
+  "Hash": "8OTGIMHM71UW3J1vzPqpgKyyen/MsSyk5DHKJq/S5t0=",
   "Source": "WebBlog",
   "BasePath": "_content/WebBlog",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\source\\repos\\WebBlog\\WebBlog\\wwwroot\\css\\style.css",
+      "SourceId": "WebBlog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\WebBlog\\WebBlog\\wwwroot\\",
+      "BasePath": "_content/WebBlog",
+      "RelativePath": "css/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
       "Identity": "C:\\Users\\HP\\source\\repos\\WebBlog\\WebBlog\\wwwroot\\favicon.ico",

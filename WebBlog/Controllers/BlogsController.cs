@@ -13,10 +13,10 @@ namespace WebBlog.Controllers
             this._blogService = blogService;
         }
 
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Create()
         {
-
-            return View(this._blogService.GetAll());
+            return View();
         }
 
     }

@@ -1,32 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebBlog.Models;
+using WebBlog.Services;
 
 namespace WebBlog.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IBlogService _blogService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IBlogService blogService)
         {
-            _logger = logger;
+            this._blogService = blogService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Blog> blogs =  this._blogService.GetAll();
+            return View(blogs);
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

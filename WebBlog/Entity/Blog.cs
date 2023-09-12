@@ -7,6 +7,9 @@ namespace WebBlog.Models
     public class Blog : BaseEntity
     {
 
+        [Required]
+        public string Snippet { get; set; }
+
         [ForeignKey("Author")]
         [Required]
         public int Author_Id { get; set; }
