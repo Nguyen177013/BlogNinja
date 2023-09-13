@@ -10,6 +10,9 @@ namespace WebBlog.Models
         [Required]
         public string Snippet { get; set; }
 
+        [Required]
+        public string Blog_Body { get; set; }
+
         [ForeignKey("Author")]
         [Required]
         public int Author_Id { get; set; }

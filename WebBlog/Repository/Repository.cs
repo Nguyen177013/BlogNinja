@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using WebBlog.Data;
 using WebBlog.Repository.Base;
 
@@ -18,16 +19,32 @@ namespace WebBlog.Repository
         public void Add(TEntity entity)
         {
             _entities.Add(entity);
+            _context.SaveChanges();
         }
 
         public void Delete(TEntity entity)
         {
             _entities.Remove(entity);
+            _context.SaveChanges();
         }
 
         public IEnumerable<TEntity> GetAll()
         {
             return _entities.ToList();
+        }
+
+        /*GPT help
+         */
+        public IEnumerable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+            IQueryable<TEntity> query = _entities;
+
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return query.ToList();
         }
 
         public TEntity GetById(int id)
@@ -38,6 +55,7 @@ namespace WebBlog.Repository
         public void Update(TEntity entity)
         {
             _entities.Update(entity);
+            _context.SaveChanges();
         }
 }
 }

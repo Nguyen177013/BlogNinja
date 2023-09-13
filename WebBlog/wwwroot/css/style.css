@@ -99,6 +99,7 @@ h3 {
 }
 
 .create-blog input,
+.create-blog select,
 .create-blog textarea {
     display: block;
     width: 100%;

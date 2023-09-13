@@ -1,14 +1,19 @@
-﻿<div class="create-blog content">
-    <form action="/blog/create" method="POST">
-        <!-- <form> -->
-        <label for="title">Blog Title</label>
-        <input type="text" id="title" name="title" required autocomplete="off">
+﻿@model BlogCreateModel
 
-        <label for="snippet">Blog snippet:</label>
-        <input type="text" id="snippet" name="snippet" required autocomplete="off">
+<div class="create-blog content">
+    <form method="POST">
+        <label asp-for="Blog.Name">Blog Title</label>
+        <input type="text" id="title" asp-for="Blog.Name" required autocomplete="off">
 
-        <label for="body">Blog body</label>
-        <textarea id="body" name="body" required></textarea>
+        <label asp-for="Blog.Snippet">Blog snippet:</label>
+        <input type="text" id="snippet" asp-for="Blog.Snippet" required autocomplete="off">
+
+        <label asp-for="Blog.Genre_Id">Genres:</label>
+        <select asp-for="Blog.Genre_Id" asp-items="@Model.Genres.Select(g => new SelectListItem { Value = g.Id.ToString(), Text = g.Name })" class="form-control">
+            <option value="">Select a Genre</option>
+        </select>
+        <label asp-for="Blog.Blog_Body">Blog body</label>
+        <textarea id="body" asp-for="Blog.Blog_Body" required></textarea>
         <button>Submit</button>
     </form>
 </div>

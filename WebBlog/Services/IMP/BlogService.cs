@@ -29,7 +29,7 @@ namespace WebBlog.Services.IMP
 
         public IEnumerable<Blog> GetAll()
         {
-            return _blogRepository.GetAll();
+            return _blogRepository.GetAllIncluding(p=>p.Author);
         }
     }
 }
