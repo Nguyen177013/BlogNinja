@@ -39,5 +39,19 @@ namespace WebBlog.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet]
+        public ActionResult Detail(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var blog = this._blogService.GetById(id);
+            if (blog == null)
+            {
+                return NotFound();
+            }
+            return View(blog);
+        }
     }
 }

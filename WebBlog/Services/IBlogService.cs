@@ -6,6 +6,6 @@ namespace WebBlog.Services
 {
     public interface IBlogService : IBaseService<Blog>
     {
-
+        Blog GetById(int id);
     }
 }

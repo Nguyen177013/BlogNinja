@@ -9,27 +9,32 @@ namespace WebBlog.Services.IMP
 
         public BlogService(IRepository<Blog> blogRepository)
         {
-            _blogRepository = blogRepository;
+            this._blogRepository = blogRepository;
         }
 
         public void Add(Blog item)
         {
-            _blogRepository.Add(item);
+            this._blogRepository.Add(item);
         }
 
         public void Delete(Blog item)
         {
-            _blogRepository.Delete(item);
+            this._blogRepository.Delete(item);
         }
 
         public void Update(Blog item)
         {
-            _blogRepository.Update(item);
+            this._blogRepository.Update(item);
         }
 
         public IEnumerable<Blog> GetAll()
         {
-            return _blogRepository.GetAllIncluding(p=>p.Author);
+            return this._blogRepository.GetAllIncluding(p=>p.Author);
+        }
+
+        public Blog GetById(int id)
+        {
+            return this._blogRepository.GetById(id);
         }
     }
 }

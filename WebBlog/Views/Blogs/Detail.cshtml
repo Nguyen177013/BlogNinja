@@ -1,0 +1,16 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<h2>@Model.Name</h2>
+    <p>@Model.Snippet</p>
+    <br>
+    <br>
+    <div class="details content">
+        <div class="content">
+            <p>@Model.Blog_Body</p>
+        </div>
+    <a href="/blog/edit/<%=blog._id%>" class="edit">edit</a>
+    <a class="delete" data-doc="<%=blog._id%>">delete</a>
+    </div>
