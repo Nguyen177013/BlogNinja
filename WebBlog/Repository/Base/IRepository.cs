@@ -8,7 +8,7 @@ namespace WebBlog.Repository.Base
         IEnumerable<TEntity> GetAll();
         void Add(TEntity entity);
         void Update(TEntity entity);
-        void Delete(TEntity entity);
+        void Delete(int id);
         IEnumerable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] includeProperties);
     }
 }

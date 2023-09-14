@@ -7,6 +7,6 @@ namespace WebBlog.Services.Base
         IEnumerable<TService> GetAll();
         void Add(TService item);
         void Update(TService item);
-        void Delete(TService item);
+        void Delete(int id);
     }
 }

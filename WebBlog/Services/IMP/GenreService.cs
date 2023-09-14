@@ -16,9 +16,9 @@ namespace WebBlog.Services.IMP
             this._genreRepository.Add(item);
         }
 
-        public void Delete(Genre item)
+        public void Delete(int id)
         {
-            this._genreRepository.Delete(item);
+            this._genreRepository.Delete(id);
         }
 
         public IEnumerable<Genre> GetAll()

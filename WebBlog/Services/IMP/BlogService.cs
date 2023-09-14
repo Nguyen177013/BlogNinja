@@ -17,9 +17,9 @@ namespace WebBlog.Services.IMP
             this._blogRepository.Add(item);
         }
 
-        public void Delete(Blog item)
+        public void Delete(int id)
         {
-            this._blogRepository.Delete(item);
+            this._blogRepository.Delete(id);
         }
 
         public void Update(Blog item)

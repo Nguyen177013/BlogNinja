@@ -22,8 +22,9 @@ namespace WebBlog.Repository
             _context.SaveChanges();
         }
 
-        public void Delete(TEntity entity)
+        public void Delete(int id)
         {
+            TEntity entity = GetById(id);
             _entities.Remove(entity);
             _context.SaveChanges();
         }
@@ -54,7 +55,8 @@ namespace WebBlog.Repository
 
         public void Update(TEntity entity)
         {
-            _entities.Update(entity);
+            _entities.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
         }
 }

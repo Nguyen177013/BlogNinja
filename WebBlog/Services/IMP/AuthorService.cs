@@ -9,7 +9,7 @@ namespace WebBlog.Services.IMP
             throw new NotImplementedException();
         }
 
-        public void Delete(Author item)
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }

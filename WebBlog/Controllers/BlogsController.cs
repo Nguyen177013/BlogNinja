@@ -53,5 +53,47 @@ namespace WebBlog.Controllers
             }
             return View(blog);
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            BlogCreateModel createBlogModel = new BlogCreateModel {
+                Genres = this._genreService.GetAll(),
+                Blog = this._blogService.GetById(id)
+                
+            };
+            return View(createBlogModel);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Blog blog)
+        {
+            try
+            {
+                blog.Author_Id = 1;
+                this._blogService.Update(blog);
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return RedirectToAction("Index", "Home");
+        }
+        
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                this._blogService.Delete(id);
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
