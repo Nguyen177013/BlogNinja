@@ -23,6 +23,7 @@ namespace WebBlog.Controllers
 
         }
 
+
         [HttpPost]
         public ActionResult Create(Blog blog)
         {
