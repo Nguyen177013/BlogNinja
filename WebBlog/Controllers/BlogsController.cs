@@ -29,7 +29,8 @@ namespace WebBlog.Controllers
         {
             try
             {
-                blog.Author_Id = 1;
+                int authorId = Int32.Parse(HttpContext.Items["UserId"].ToString());
+                blog.Author_Id = authorId;
                 this._blogService.Add(blog);
 
             }

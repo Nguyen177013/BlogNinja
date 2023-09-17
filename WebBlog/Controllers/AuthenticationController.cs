@@ -58,5 +58,13 @@ namespace WebBlog.Controllers
             Response.Cookies.Append("jwt", token, cookieOptions);
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            Response.Cookies.Delete("jwt");
+            //HttpContext.Items.Clear();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

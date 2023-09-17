@@ -1,4 +1,5 @@
-﻿using WebBlog.Utils;
+﻿using WebBlog.Models;
+using WebBlog.Utils;
 
 namespace WebBlog.Middlewares
 {
@@ -21,7 +22,8 @@ namespace WebBlog.Middlewares
                 {
                     JwtUtils jwtUtl = new JwtUtils();
                     string cookieValue = httpContext.Request.Cookies["jwt"];
-                    if (jwtUtl.ValidToken(cookieValue))
+                    Author author = jwtUtl.ValidToken(cookieValue);
+                    if(author!=null)
                     {
                         await _next(httpContext);
                         return;
@@ -30,12 +32,6 @@ namespace WebBlog.Middlewares
                 httpContext.Response.Redirect("/Authentication/Login");
             }
             await _next(httpContext);
-        }
-
-        private static bool IsHomePath(HttpContext context)
-        {
-
-            return context.Request.Path.StartsWithSegments("/Home", StringComparison.OrdinalIgnoreCase);
         }
     }
 

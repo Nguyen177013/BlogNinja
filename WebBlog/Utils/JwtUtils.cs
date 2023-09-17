@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
+using System.Diagnostics.Eventing.Reader;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Principal;
@@ -35,16 +36,19 @@ namespace WebBlog.Utils
             return tokenHandler.WriteToken(token);
         }
 
-        public bool ValidToken(string token)
+        public Author ValidToken(string token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var validationParameters = GetValidationParameters();
-            IPrincipal principal = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
+            ClaimsPrincipal principal = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
             if(principal == null)
             {
-                return false;
+                return null;
             }
-            return true;
+            Author author = new Author();
+            author.UserName = principal.FindFirstValue("UserName");
+            author.Id = Int32.Parse(principal.FindFirstValue("UserId"));
+            return author;
         }
 
         private TokenValidationParameters GetValidationParameters()
