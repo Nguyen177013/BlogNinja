@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using WebBlog.Data;
+using WebBlog.Middlewares;
 using WebBlog.Models;
 using WebBlog.Repository;
 using WebBlog.Repository.Base;
@@ -56,7 +57,7 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseAuthMiddleware();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
