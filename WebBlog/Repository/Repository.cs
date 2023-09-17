@@ -59,5 +59,14 @@ namespace WebBlog.Repository
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
         }
-}
+        public TEntity Find(params Expression<Func<TEntity, bool>>[] filter)
+        {
+            IQueryable<TEntity> query = _entities;
+            foreach (var filterProperty in filter)
+            {
+                query = query.Where(filterProperty);
+            }
+            return query.FirstOrDefault();
+        }
+    }
 }

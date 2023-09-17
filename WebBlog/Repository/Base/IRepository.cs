@@ -10,5 +10,7 @@ namespace WebBlog.Repository.Base
         void Update(TEntity entity);
         void Delete(int id);
         IEnumerable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] includeProperties);
+
+        TEntity Find(params Expression<Func<TEntity, bool>>[] filter);
     }
 }
