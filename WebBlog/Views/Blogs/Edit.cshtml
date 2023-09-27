@@ -5,6 +5,7 @@
 
 <div class="create-blog content">
     <form method="POST">
+        <input type="hidden" asp-for="@Model.Blog.Id" />
         <label asp-for="Blog.Name">Blog Title</label>
         <input type="text" id="title" asp-for="Blog.Name" required/>
 

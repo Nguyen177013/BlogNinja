@@ -72,13 +72,13 @@ namespace WebBlog.Controllers
         {
             try
             {
-                blog.Author_Id = 1;
+                blog.Author_Id = Int32.Parse(HttpContext.Items["UserId"].ToString());
                 this._blogService.Update(blog);
 
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex);
             }
             return RedirectToAction("Index", "Home");
         }
@@ -93,7 +93,7 @@ namespace WebBlog.Controllers
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex);
             }
             return RedirectToAction("Index", "Home");
         }
